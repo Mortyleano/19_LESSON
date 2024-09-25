@@ -2,11 +2,11 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import config.ConfigReader;
 import config.LaunchConfig;
 import io.qameta.allure.Step;
 import io.qameta.allure.selenide.AllureSelenide;
 import io.restassured.RestAssured;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,16 +19,16 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class TestBase {
 
-    private final static LaunchConfig config = ConfigReader.Instance.read();
+    private static final LaunchConfig config = ConfigFactory.create(LaunchConfig.class, System.getProperties());
 
     @BeforeAll
     @Step("Устанавливаем конфигурации перед запуском теста")
     public static void settingsTest() {
         RestAssured.baseURI = config.getBaseUrl();
         Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browser = config.getBaseBrowser();
-        Configuration.browserVersion = config.getBaseBrowserVersion();
-        Configuration.browserSize = config.getBaseBrowserSize();
+        Configuration.browser = config.getBrowser();
+        Configuration.browserVersion = config.getBrowserVersion();
+        Configuration.browserSize = config.getBrowserSize();
         Configuration.pageLoadStrategy = config.pageLoadStrategy();
 
         DesiredCapabilities capabilities = new DesiredCapabilities();

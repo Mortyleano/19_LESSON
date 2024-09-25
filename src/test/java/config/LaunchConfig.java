@@ -11,14 +11,14 @@ public interface LaunchConfig extends Config {
     @Key("baseUrl")
     String getBaseUrl();
 
-    @Key("baseBrowserSize")
-    String getBaseBrowserSize();
+    @Key("browserSize")
+    String getBrowserSize();
 
-    @Key("baseBrowser")
-    String getBaseBrowser();
+    @Key("browser")
+    String getBrowser();
 
-    @Key("baseBrowserVersion")
-    String getBaseBrowserVersion();
+    @Key("browserVersion")
+    String getBrowserVersion();
 
     @Key("pageLoadStrategy")
     String pageLoadStrategy();
