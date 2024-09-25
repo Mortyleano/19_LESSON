@@ -20,6 +20,12 @@ public interface LaunchConfig extends Config {
     @Key("browserVersion")
     String getBrowserVersion();
 
+    @Key("isRemote")
+    boolean isRemote();
+
+    @Key("remoteUrl")
+    String remoteUrl();
+
     @Key("pageLoadStrategy")
     String pageLoadStrategy();
 }
